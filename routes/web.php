@@ -30,6 +30,6 @@ Route::get('json', function () {
     return $persona;
 });
 
-Route::get('hola/{nombre?}', function ($nombre = 'a todos') {
-    return 'Hola '.$nombre;
-});
+Route::get('hola/{nombre?}', [App\Http\Controllers\EjemploController::class, 'saludo']);
+
+Route::get('tablas/{numero}', [App\Http\Controllers\EjemploController::class, 'tablas']);
