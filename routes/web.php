@@ -16,3 +16,20 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+/*Route::get('hola', function () {
+    return 'Hola a todos';
+});*/
+
+Route::get('json', function () {
+    $persona = [
+        'nombre' => 'Fernando',
+        'telefono' => '123456'
+    ];
+    return $persona;
+});
+
+Route::get('hola/{nombre?}', function ($nombre = 'a todos') {
+    return 'Hola '.$nombre;
+});
