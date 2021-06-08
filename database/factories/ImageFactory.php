@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Image;
+use App\Models\Product;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class ImageFactory extends Factory
@@ -22,7 +23,8 @@ class ImageFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'image_path' => 'images/shoes-img1.png',
+            'products_id' => Product::factory()->create()
         ];
     }
 }
