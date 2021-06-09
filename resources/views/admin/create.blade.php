@@ -2,48 +2,30 @@
 
 @section('content')
 <!-- contact section start -->
-<div class="collection_text">Contact Us</div>
+<div class="collection_text">Nuevo producto</div>
 <div class="layout_padding contact_section">
-    <div class="container">
-        <h1 class="new_text"><strong>Contact Now</strong></h1>
-    </div>
-    <div class="container-fluid ram">
-        <div class="row">
-            <div class="col-md-6">
-                <div class="email_box">
-                <div class="input_main">
-                   <div class="container">
-                      <form action="/action_page.php">
-                        <div class="form-group">
-                          <input type="text" class="email-bt" placeholder="Name" name="Name">
-                        </div>
-                        <div class="form-group">
-                          <input type="text" class="email-bt" placeholder="Phone Numbar" name="Name">
-                        </div>
-                        <div class="form-group">
-                          <input type="text" class="email-bt" placeholder="Email" name="Email">
-                        </div>
-                        
-                        <div class="form-group">
-                            <textarea class="massage-bt" placeholder="Massage" rows="5" id="comment" name="Massage"></textarea>
-                        </div>
-                      </form>   
-                   </div> 
-                   <div class="send_btn">
-                    <button class="main_bt">Send</button>
-                   </div>                   
-                </div>
-        </div>
+    <div class="container rounded shadow mb-5">
+        <form class="mb-3" method="POST" action="{{ route('products.store') }}" accept-charset="UTF-8" enctype="multipart/form-data">
+            @csrf
+            <div class="mb-3">
+              <label for="nombre" class="form-label">Nombre</label>
+              <input type="text" class="form-control" id="nombre" name="name">
             </div>
-            <div class="col-md-6">
-                <div class="shop_banner">
-                    <div class="our_shop">
-                        <button class="out_shop_bt">Our Shop</button>
-                    </div>
-                </div>
+            <div class="mb-3">
+              <label for="precio" class="form-label">Precio</label>
+              <input type="text" class="form-control" id="precio"  name="price">
             </div>
-        </div>
+            <div class="mb-3">
+                <label for="description">Descripción</label>
+                <textarea class="form-control" id="description" style="height: 100px" name="description"></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="image" class="form-label">Agregar imagen</label>
+                <input class="form-control" type="file" id="image" name="image">
+              </div>
+            <button type="submit" class="btn btn-primary">Guardar</button>
+        </form>
     </div>
 </div>
-   <!-- contact section end -->
+<!-- contact section end -->
 @endsection

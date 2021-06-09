@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Str;
 
 class ProductController extends Controller
 {
@@ -14,7 +16,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return view('admin.index');
+        $products = Product::all();
+        return view('admin.index', compact('products'));
     }
 
     /**
@@ -24,7 +27,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.create');
     }
 
     /**
@@ -35,7 +38,17 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $count = Product::all()->count();
+
+        $product = new Product();
+        $product->name = $request->name;
+        $product->slug = Str::slug($request->name).'-'.$count+1;
+        $product->price = $request->price;
+        $product->description = $request->description;
+        $product->save();
+
+        Session::flash('message', 'Registro creado exitosamente');
+        return redirect(route('products.index'));
     }
 
     /**

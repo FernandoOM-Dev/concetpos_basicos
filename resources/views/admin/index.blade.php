@@ -4,6 +4,14 @@
 
 <div class="container rounded shadow mb-5">
     <h1>Zapatos en venta</h1>
+    @if (Session::has('message'))
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>{{ Session::get('message') }}</strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    @endif
     <table class="table table-hover">
         <thead>
             <tr>
@@ -15,83 +23,27 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>1</td>
-                <td><img src="images/shoes-img1.png" alt=""></td>
-                <td>Zapato de ejemplo</td>
-                <td>$32.66</td>
-                <td>
-                    <div class="row">
-                        <div class="col-4">
-                            <button type="button" class="btn btn-info"><i class="fas fa-info-circle"></i></button>
+            @foreach ($products as $product )
+                <tr>
+                    <td>{{ $product->id }}</td>
+                    <td><img src="images/shoes-img1.png" alt=""></td>
+                    <td>{{ $product->name }}</td>
+                    <td>${{ $product->price }}</td>
+                    <td>
+                        <div class="row">
+                            <div class="col-4">
+                                <button type="button" class="btn btn-info"><i class="fas fa-info-circle"></i></button>
+                            </div>
+                            <div class="col-4">
+                                <button type="button" class="btn btn-warning"><i class="fas fa-edit"></i></button>
+                            </div>
+                            <div class="col-4">
+                                <button type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
+                            </div>
                         </div>
-                        <div class="col-4">
-                            <button type="button" class="btn btn-warning"><i class="fas fa-edit"></i></button>
-                        </div>
-                        <div class="col-4">
-                            <button type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
-                        </div>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td><img src="images/shoes-img5.png" alt=""></td>
-                <td>Zapato de ejemplo</td>
-                <td>$32.66</td>
-                <td>
-                    <div class="row">
-                        <div class="col-4">
-                            <button type="button" class="btn btn-info"><i class="fas fa-info-circle"></i></button>
-                        </div>
-                        <div class="col-4">
-                            <button type="button" class="btn btn-warning"><i class="fas fa-edit"></i></button>
-                        </div>
-                        <div class="col-4">
-                            <button type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
-                        </div>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td><img src="images/shoes-img2.png" alt=""></td>
-                <td>Zapato de ejemplo</td>
-                <td>$32.66</td>
-                <td>
-                    <div class="row">
-                        <div class="col-4">
-                            <button type="button" class="btn btn-info"><i class="fas fa-info-circle"></i></button>
-                        </div>
-                        <div class="col-4">
-                            <button type="button" class="btn btn-warning"><i class="fas fa-edit"></i></button>
-                        </div>
-                        <div class="col-4">
-                            <button type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
-                        </div>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td><img src="images/shoes-img3.png" alt=""></td>
-                <td>Zapato de ejemplo</td>
-                <td>$32.66</td>
-                <td>
-                    <div class="row">
-                        <div class="col-4">
-                            <button type="button" class="btn btn-info"><i class="fas fa-info-circle"></i></button>
-                        </div>
-                        <div class="col-4">
-                            <button type="button" class="btn btn-warning"><i class="fas fa-edit"></i></button>
-                        </div>
-                        <div class="col-4">
-                            <button type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
-                        </div>
-                    </div>
-                </td>
-            </tr>
-            
+                    </td>
+                </tr>
+            @endforeach
         </tbody>
     </table>
 </div>
