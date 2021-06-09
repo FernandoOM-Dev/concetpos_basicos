@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,19 +18,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
 
-/*Route::get('hola', function () {
-    return 'Hola a todos';
-});*/
+Route::get('products', [ProductController::class, 'index'])->name('products.index');
 
-Route::get('json', function () {
-    $persona = [
-        'nombre' => 'Fernando',
-        'telefono' => '123456'
-    ];
-    return $persona;
-});
-
-Route::get('hola/{nombre?}', [App\Http\Controllers\EjemploController::class, 'saludo']);
-
-Route::get('tablas/{numero}', [App\Http\Controllers\EjemploController::class, 'tablas']);
+require __DIR__.'/auth.php';

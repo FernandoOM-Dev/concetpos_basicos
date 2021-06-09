@@ -24,7 +24,7 @@ class ImageFactory extends Factory
     {
         return [
             'image_path' => 'images/shoes-img1.png',
-            'products_id' => Product::factory()->create()
+            'product_id' => Product::factory()->create()
         ];
     }
 }
