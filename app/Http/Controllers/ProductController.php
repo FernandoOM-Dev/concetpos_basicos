@@ -41,6 +41,13 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => 'required|min:4',
+            'price' => 'required|nuemric',
+            'description' => 'required'
+        ]);
+
+
         $count = Product::all()->count();
 
         $product = new Product();
