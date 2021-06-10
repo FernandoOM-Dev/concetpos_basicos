@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ImageController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
@@ -25,5 +26,6 @@ Route::get('/dashboard', function () {
 Route::get('products', [ProductController::class, 'index'])->name('products.index');
 Route::post('products', [ProductController::class, 'store'])->name('products.store');
 Route::get('products/create', [ProductController::class, 'create'])->name('products.create');
+Route::get('products/{product}/image', [ImageController::class, 'show'])->name('products.image');
 
 require __DIR__.'/auth.php';

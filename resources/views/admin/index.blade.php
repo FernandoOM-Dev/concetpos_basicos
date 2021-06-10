@@ -26,7 +26,7 @@
             @foreach ($products as $product )
                 <tr>
                     <td>{{ $product->id }}</td>
-                    <td><img src="images/shoes-img1.png" alt=""></td>
+                    <td><img src="{{ route('products.image', $product->id) }}" alt="" style="width: 100px;"></td>
                     <td>{{ $product->name }}</td>
                     <td>${{ $product->price }}</td>
                     <td>

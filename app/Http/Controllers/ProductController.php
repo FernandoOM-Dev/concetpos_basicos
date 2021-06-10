@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use App\Http\Controllers\ImageController;
 
 class ProductController extends Controller
 {
@@ -46,6 +49,8 @@ class ProductController extends Controller
         $product->price = $request->price;
         $product->description = $request->description;
         $product->save();
+
+        app(ImageController::class)->store($product, $request);
 
         Session::flash('message', 'Registro creado exitosamente');
         return redirect(route('products.index'));
