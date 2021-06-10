@@ -62,9 +62,10 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $product)
+    public function show(String $slug)
     {
-        //
+        $product = Product::where('slug', '=', $slug)->first();
+        return view('admin.show', compact('product'));
     }
 
     /**
@@ -73,9 +74,10 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function edit(Product $product)
+    public function edit(String $slug)
     {
-        //
+        $product = Product::where('slug', '=', $slug)->first();
+        return view('admin.edit', compact('product'));
     }
 
     /**
@@ -87,7 +89,12 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+        $product->name = $request->name;
+        $product->price = $request->price;
+        $product->description = $request->description;
+        $product->update();
+        Session::flash('message', 'El registro fue editado con exito.');
+        return redirect(route('products.index'));
     }
 
     /**

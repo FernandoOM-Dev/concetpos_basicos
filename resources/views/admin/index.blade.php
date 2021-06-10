@@ -32,10 +32,14 @@
                     <td>
                         <div class="row">
                             <div class="col-4">
-                                <button type="button" class="btn btn-info"><i class="fas fa-info-circle"></i></button>
+                                <a href="{{ route('products.show', $product->slug) }}">
+                                    <button type="button" class="btn btn-info"><i class="fas fa-info-circle"></i></button>
+                                </a>
                             </div>
                             <div class="col-4">
-                                <button type="button" class="btn btn-warning"><i class="fas fa-edit"></i></button>
+                                <a href="{{ route('products.edit', $product->slug) }}">
+                                    <button type="button" class="btn btn-warning"><i class="fas fa-edit"></i></button>
+                                </a>
                             </div>
                             <div class="col-4">
                                 <button type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
