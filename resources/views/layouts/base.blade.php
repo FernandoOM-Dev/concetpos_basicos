@@ -49,13 +49,23 @@
                         </button>
                     <div class="collapse navbar-collapse" id="navbarNavAltMarkup" style="z-index: 1000000">
                         <div class="navbar-nav">
-                            <a class="nav-item nav-link" href="">Home</a>
-                            <a class="nav-item nav-link" href="">Collection</a>
-                            <a class="nav-item nav-link" href="">Shoes</a>
-                            <a class="nav-item nav-link" href="">Racing Boots</a>
-                            <a class="nav-item nav-link" href="">Contact</a>
-                            <a class="nav-item nav-link last" href="#"><img src="{{ asset('images/search_icon.png') }}"></a>
-                            <a class="nav-item nav-link last" href=""><img src="{{ asset('images/shop_icon.png') }}"></a>
+                            @if (Auth::user()->is_admin === 'true')
+                                <a class="nav-item nav-link" href="{{ route('products.index') }}">Ver productos</a>
+                                <a class="nav-item nav-link" href="{{ route('products.create') }}">Crear producto</a>
+                                <a class="nav-item nav-link" href="">{{ Auth::user()->name }}</a>
+                                <form action="{{ route('logout') }}" method="POST">
+                                    @csrf
+                                    <button type="submit">Cerrar sesión</button>
+                                </form>
+                            @else
+                                <a class="nav-item nav-link" href="">Home</a>
+                                <a class="nav-item nav-link" href="">Collection</a>
+                                <a class="nav-item nav-link" href="">Shoes</a>
+                                <a class="nav-item nav-link" href="">Racing Boots</a>
+                                <a class="nav-item nav-link" href="">Contact</a>
+                                <a class="nav-item nav-link last" href="#"><img src="{{ asset('images/search_icon.png') }}"></a>
+                                <a class="nav-item nav-link last" href=""><img src="{{ asset('images/shop_icon.png') }}"></a>
+                            @endif
                          </div>
                     </div>
                     </nav>
