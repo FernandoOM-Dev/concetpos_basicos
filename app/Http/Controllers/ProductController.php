@@ -105,6 +105,9 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        app(ImageController::class)->destroy($product);
+        $product->delete();
+        Session::flash('message', 'Registro eliminado.');
+        return redirect(route('products.index'));
     }
 }

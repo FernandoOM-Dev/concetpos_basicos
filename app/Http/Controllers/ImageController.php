@@ -46,8 +46,10 @@ class ImageController extends Controller
      * @param  \App\Models\Image  $image
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Image $image)
+    public function destroy(Product $product)
     {
-        //
+        $image = $product->images()->first();
+        Storage::delete($image->image_path);
+        $image->delete();
     }
 }

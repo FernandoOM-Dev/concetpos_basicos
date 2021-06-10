@@ -42,7 +42,11 @@
                                 </a>
                             </div>
                             <div class="col-4">
-                                <button type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
+                                <form action="{{ route('products.destroy', $product->id) }}" method="POST">
+                                    @method('DELETE')
+                                    @csrf
+                                    <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
+                                </form>
                             </div>
                         </div>
                     </td>
