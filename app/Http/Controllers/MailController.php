@@ -12,15 +12,15 @@ class MailController extends Controller
         //correo al usuario
         Mail::send('emails.contact', $request->all(), function ($message) use ($request){
             $message->subject('Correo de contacto');
-            $message->from('shoesshoptest4@gmail.com', 'SHOES SHOP');
+            $message->from(env('MAIL_USERNAME'), env('MAIL_FROM_NAME'));
             $message->to($request->email, $request->name);
         });
 
         //Correo al administrador
         Mail::send('emails.admin', $request->all(), function ($message) {
             $message->subject('Mensaje de usuario');
-            $message->from('shoesshoptest4@gmail.com', 'SHOES SHOP');
-            $message->to('shoesshoptest4@gmail.com', 'SHOES SHOP');
+            $message->from(env('MAIL_USERNAME'), env('MAIL_FROM_NAME'));
+            $message->to(env('MAIL_USERNAME'), env('MAIL_FROM_NAME'));
         });
 
         return redirect(route('home'));

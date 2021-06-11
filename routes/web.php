@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ImageController;
+use App\Http\Controllers\MailController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
@@ -53,5 +54,7 @@ Route::delete('prodcuts/{product}', [ProductController::class, 'destroy'])->name
 Route::get('products/{slug}/edit', [ProductController::class, 'edit'])->name('products.edit')->middleware('auth');
 
 Route::get('products/{product}/image', [ImageController::class, 'show'])->name('products.image')->middleware('auth');
+
+Route::post('mail/send', [MailController::class, 'store'])->middleware('auth')->name('mail.send');
 
 require __DIR__.'/auth.php';

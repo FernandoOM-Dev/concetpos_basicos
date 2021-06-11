@@ -13,16 +13,16 @@
                 <div class="email_box">
                 <div class="input_main">
                    <div class="container">
-                      <form action="/action_page.php" method="POST">
+                      <form action="{{ route('mail.send') }}" method="POST">
                             @csrf
                             <div class="form-group">
-                            <input type="text" class="email-bt" placeholder="Name" name="name">
+                            <input type="text" class="email-bt" placeholder="Name" name="name" value="{{ Auth::user()->name }}">
                             </div>
                             <div class="form-group">
                             <input type="text" class="email-bt" placeholder="Phone Number" name="phone">
                             </div>
                             <div class="form-group">
-                            <input type="text" class="email-bt" placeholder="Email" name="email">
+                            <input type="text" class="email-bt" placeholder="Email" name="email" value="{{ Auth::user()->email }}">
                             </div>
 
                             <div class="form-group">
