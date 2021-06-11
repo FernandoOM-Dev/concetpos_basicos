@@ -13,25 +13,26 @@
                 <div class="email_box">
                 <div class="input_main">
                    <div class="container">
-                      <form action="/action_page.php">
-                        <div class="form-group">
-                          <input type="text" class="email-bt" placeholder="Name" name="Name">
-                        </div>
-                        <div class="form-group">
-                          <input type="text" class="email-bt" placeholder="Phone Numbar" name="Name">
-                        </div>
-                        <div class="form-group">
-                          <input type="text" class="email-bt" placeholder="Email" name="Email">
-                        </div>
-                        
-                        <div class="form-group">
-                            <textarea class="massage-bt" placeholder="Massage" rows="5" id="comment" name="Massage"></textarea>
-                        </div>
-                      </form>   
-                   </div> 
-                   <div class="send_btn">
-                    <button class="main_bt">Send</button>
-                   </div>                   
+                      <form action="/action_page.php" method="POST">
+                            @csrf
+                            <div class="form-group">
+                            <input type="text" class="email-bt" placeholder="Name" name="name">
+                            </div>
+                            <div class="form-group">
+                            <input type="text" class="email-bt" placeholder="Phone Number" name="phone">
+                            </div>
+                            <div class="form-group">
+                            <input type="text" class="email-bt" placeholder="Email" name="email">
+                            </div>
+
+                            <div class="form-group">
+                                <textarea class="massage-bt" placeholder="Massage" rows="5" id="comment" name="user_message"></textarea>
+                            </div>
+                            <div class="send_btn">
+                                <button class="main_bt">Send</button>
+                            </div>
+                      </form>
+                   </div>
                 </div>
         </div>
             </div>

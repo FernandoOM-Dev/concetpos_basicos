@@ -58,11 +58,16 @@
                                     <button type="submit">Cerrar sesión</button>
                                 </form>
                             @else
-                                <a class="nav-item nav-link" href="">Home</a>
-                                <a class="nav-item nav-link" href="">Collection</a>
-                                <a class="nav-item nav-link" href="">Shoes</a>
-                                <a class="nav-item nav-link" href="">Racing Boots</a>
-                                <a class="nav-item nav-link" href="">Contact</a>
+                                <a class="nav-item nav-link" href="{{ route('home') }}">Home</a>
+                                <a class="nav-item nav-link" href="{{ route('collection') }}">Collection</a>
+                                <a class="nav-item nav-link" href="{{ route('shoes') }}">Shoes</a>
+                                <a class="nav-item nav-link" href="{{ route('racingboots') }}">Racing Boots</a>
+                                <a class="nav-item nav-link" href="{{ route('contact') }}">Contact</a>
+                                <a class="nav-item nav-link" href="">{{ Auth::user()->name }}</a>
+                                <form action="{{ route('logout') }}" method="POST">
+                                    @csrf
+                                    <button type="submit">Cerrar sesión</button>
+                                </form>
                                 <a class="nav-item nav-link last" href="#"><img src="{{ asset('images/search_icon.png') }}"></a>
                                 <a class="nav-item nav-link last" href=""><img src="{{ asset('images/shop_icon.png') }}"></a>
                             @endif
